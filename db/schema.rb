@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171016111039) do
+ActiveRecord::Schema.define(version: 20171016111448) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "feedbacks", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "text"
+    t.string "name", null: false
+    t.string "email", null: false
+    t.string "text", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
