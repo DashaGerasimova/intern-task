@@ -13,12 +13,6 @@ class FeedbacksController < ApplicationController
     SendFeedbackNotificationToAdmin.call
   end
 
-  def destroy
-    authorize feedback
-    feedback.destroy
-    respond_with feedback
-  end
-
   private
 
   def set_feedbacks
