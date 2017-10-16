@@ -1,7 +1,7 @@
 require "rails_helper"
 
 feature "Feedback creation" do
-  let(:feedback) { FactoryGirl.create(:feedback) }
+  let(:feedback) { create :feedback }
 
   scenario "Visitor creates feedback" do
     visit new_feedback_path

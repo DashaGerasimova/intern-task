@@ -3,4 +3,8 @@ class User < ApplicationRecord
     :recoverable, :rememberable, :trackable, :validatable
 
   validates :full_name, presence: true
+
+  def admin?
+    role == "admin"
+  end
 end
