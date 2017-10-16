@@ -1,12 +1,16 @@
 h1 All feedbacks
 
+= form_tag(feedbacks_path, method: :get) do
+  = text_field_tag :search_term, params[:search_term]
+  = submit_tag 'Search'
+
 - feedbacks.each do |feedback|
   .feedback 
     |"
     = feedback.text
     |"
     span.feedback_author  by 
-    = feedback.email
+    = feedback.name
 = paginate feedbacks
 br
 

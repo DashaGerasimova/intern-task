@@ -1,7 +1,7 @@
 class FeedbacksController < ApplicationController
   expose_decorated :feedback
   expose :user, -> { current_user }
-  expose :feedbacks, -> { Feedback.order(:created_at).page params[:page] }
+  expose :feedbacks, -> { set_feedbacks }
 
   def index
     authorize feedback
@@ -9,8 +9,8 @@ class FeedbacksController < ApplicationController
 
   def create
     feedback.save
-    SendFeedbackNotificationToAdmin.call
     respond_with feedback, location: root_path
+    SendFeedbackNotificationToAdmin.call
   end
 
   def destroy
@@ -20,6 +20,10 @@ class FeedbacksController < ApplicationController
   end
 
   private
+
+  def set_feedbacks
+    Feedback.search(params[:search_term]).order(:created_at).page params[:page]
+  end
 
   def feedback_params
     params.require(:feedback).permit(:name, :email, :text)
