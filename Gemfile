@@ -46,6 +46,7 @@ gem "responders"
 gem "rollbar"
 gem "seedbank"
 gem "stackprof"
+gem 'validates_email_format_of'
 
 group :staging, :production do
   gem "newrelic_rpm"

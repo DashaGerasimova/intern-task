@@ -8,9 +8,10 @@ class FeedbacksController < ApplicationController
   end
 
   def create
-    feedback.save
+    if feedback.save
+      SendFeedbackNotificationToAdmin.call
+    end
     respond_with feedback, location: root_path
-    SendFeedbackNotificationToAdmin.call
   end
 
   private
