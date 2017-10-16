@@ -1,5 +1,6 @@
 class FeedbacksController < ApplicationController
   expose_decorated :feedback
+  expose :user, -> { current_user }
   expose :feedbacks, -> { Feedback.all }
 
   def create
