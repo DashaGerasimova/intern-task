@@ -7,6 +7,6 @@ class ApplicationPolicy
   end
 
   def admin?
-  	user.try(:admin?)
+    user.try(:admin?)
   end
 end

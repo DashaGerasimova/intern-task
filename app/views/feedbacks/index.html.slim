@@ -1,19 +1,13 @@
 h1 All feedbacks
 
-table
-  thead
-    tr
-      th Name
-      th Email
-      th Text
-
-  tbody
-    - feedbacks.each do |feedback|
-      tr
-        td = link_to 'Show', feedback
-        td = link_to 'Edit', edit_feedback_path(feedback)
-        td = link_to 'Destroy', feedback, data: { confirm: 'Are you sure?' }, method: :delete
-
+- feedbacks.each do |feedback|
+  .feedback 
+    |"
+    = feedback.text
+    |"
+    span.feedback_author  by 
+    = feedback.email
+= paginate feedbacks
 br
 
 = link_to 'New Feedback', new_feedback_path

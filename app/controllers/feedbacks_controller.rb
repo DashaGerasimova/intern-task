@@ -1,13 +1,14 @@
 class FeedbacksController < ApplicationController
   expose_decorated :feedback
   expose :user, -> { current_user }
-  expose :feedbacks, -> { Feedback.all }
+  expose :feedbacks, -> { Feedback.order(:created_at).page params[:page] }
 
   def index
     authorize feedback
   end
 
   def create
+    feedback.save
     respond_with feedback, location: root_path
   end
 

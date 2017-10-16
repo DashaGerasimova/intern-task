@@ -9,4 +9,4 @@
   = f.input :name, input_html: { value: user.try(:full_name) }
   = f.input :email, input_html: { value: user.try(:email) }
   = f.input :text
-  .actions = f.submit
+  .actions = f.button :submit
