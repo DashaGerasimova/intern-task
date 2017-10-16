@@ -7,4 +7,11 @@ class ApplicationController < ActionController::Base
 
   responders :flash
   respond_to :html
+
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
+  def user_not_authorized
+    flash[:alert] = 'You are not authorized to perform this action.'
+    redirect_to(request.referrer || root_path)
+  end
 end

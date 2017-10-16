@@ -3,11 +3,16 @@ class FeedbacksController < ApplicationController
   expose :user, -> { current_user }
   expose :feedbacks, -> { Feedback.all }
 
+  def index
+    authorize feedback
+  end
+
   def create
     respond_with feedback, location: root_path
   end
 
   def destroy
+    authorize feedback
     feedback.destroy
     respond_with feedback
   end
