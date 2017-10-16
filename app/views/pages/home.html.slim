@@ -2,4 +2,5 @@
   .columns
     h2
       = title("Home")
-    = link_to 'New Feedback', new_feedback_path
+    h3 = link_to 'All Feedbacks', feedbacks_path if policy(:feedback).index?
+    h3 = link_to 'New Feedback', new_feedback_path

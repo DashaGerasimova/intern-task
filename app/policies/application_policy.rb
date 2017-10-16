@@ -3,7 +3,7 @@ class ApplicationPolicy
 
   def initialize(user, record)
     @user = user
-    @record = record.to_model
+    @record = record
   end
 
   def admin?
