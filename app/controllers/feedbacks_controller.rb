@@ -17,7 +17,7 @@ class FeedbacksController < ApplicationController
   private
 
   def set_feedbacks
-    Feedback.search(params[:search_term]).order(:created_at).page params[:page]
+    Feedback.search(params[:search_term]).order(created_at: :desc).page params[:page]
   end
 
   def feedback_params
